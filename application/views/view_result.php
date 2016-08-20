@@ -20,7 +20,7 @@
 			?>
 			<center><b><p>Please find your name and print your ticket</p></b></center>
 			<table class="table">
-			<center><tr class="text-center"><td>Name</td><td>Track</td><td>Action</td></tr></center>
+			<center><tr class="text-center"><td>Name</td><td>Affiliation</td><td>Action</td></tr></center>
 			<?php
 			 foreach ($results as $val)
 			 //var_dump($val);
@@ -28,7 +28,7 @@
 			?>
 			<tr>
 			    <td><?php echo $val['name']; ?></td>
-			    <td class='text-center'><?php echo $val['COL 3']; ?></td>
+			    <td class='text-center'><?php echo $val['afiliasi']; ?></td>
 			    <?php 
 			    if ($val['check_in_status'] == "Approved")
 			    {

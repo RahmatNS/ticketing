@@ -60,40 +60,54 @@ class PDF_AutoPrint extends PDF_JavaScript
 		$script .= "print(pp);";
 		$this->IncludeJS($script);
 	}
+
+	function ContentBigName($data)
+	{
+                foreach ($data as $key) {
+                        $this->setFont('Times','B',24);
+                        $this->setFillColor(255,255,255);
+                        $this->setY(70);	
+                        $this->cell(0,0,$key->name,0,0,'C');
+                }
+    } 
+
 	function Content($data)
 	{
                 foreach ($data as $key) {
                         $this->setFont('Times','B',12);
                         $this->SetAutoPageBreak('0');
                         $this->setFillColor(255,255,255);
-                        $this->setY(20);	
-                        $this->cell(0,0,$key->name,0,0,'C');
-                        $this->setY(30);
-                        $this->cell(0,0,$key->afiliasi,0,0,'C');
-                        $this->setY(40);
-                        $this->cell(0,0,'PARTICIPANT',0,0,'C');
-                        $this->setY(70);
-                        $this->cell(0,0,'DOOR PRIZE',0,0,'C');
                         $this->setY(80);
-                        $this->cell(0,0,$key->name,0,0,'C');
-                        $this->setY(95);
-                        $this->cell(0,0,'TOUR',0,0,'C');
-                        $this->setY(105);
-                        $this->cell(0,0,$key->name,0,0,'C');
-                        $this->setY(120);
+                        $this->cell(0,0,$key->afiliasi,0,0,'C');
+                        $this->setY(143);
                         $this->cell(0,0,'VISIT',0,0,'C');
-                        $this->setY(130);
+                        $this->setY(153);
                         $this->cell(0,0,$key->name,0,0,'C');
+                        $this->setY(163);
+                        $this->cell(0,0,$key->afiliasi,0,0,'C');
+                        $this->setY(185);
+                        $this->cell(0,0,'TOUR',0,0,'C');
+                        $this->setY(195);
+                        $this->cell(0,0,$key->name,0,0,'C');
+                        $this->setY(205);
+                        $this->cell(0,0,$key->afiliasi,0,0,'C');
+                        $this->setY(235);
+                        $this->cell(0,0,'DOOR PRIZE',0,0,'C');
+                        $this->setY(245);
+                        $this->cell(0,0,$key->name,0,0,'C');
+                        $this->setY(255);
+                        $this->cell(0,0,$key->afiliasi,0,0,'C');
                         //$this->cell(50,10,$key->kelamin,1,1,'L',1);
                 }
     }            
  
 }
  
-$pdf = new PDF_AutoPrint('P','mm',array(97,137));
+$pdf = new PDF_AutoPrint('P','mm',array(97,273));
 $pdf->AliasNbPages();
 $pdf->AddPage();
 $pdf->Content($data);
+$pdf->ContentBigName($data);
 $pdf->AutoPrint(true);
 $pdf->Output();
 //$filename="pdf/ticket.pdf";

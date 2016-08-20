@@ -8,8 +8,8 @@ class Search_model extends CI_Model {
 	{	
 		$this->db->select('*');
         $this->db->from('dummy');
-        $this->db->like('name',$keyword, 'both');
-        $this->db->or_like('email', $keyword, 'both');
+        $this->db->like('email',$keyword, 'none');
+        //$this->db->or_like('email', $keyword, 'both');
 
         // Execute the query.
         $query = $this->db->get();
